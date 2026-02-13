@@ -14,3 +14,6 @@ Boty służą wyłącznie do zwalczanie B. Chodackiej :shit:.
 `npm i`
 4. Uruchom aplikację
 `node app.js`
+## Warianty:
+- **app.js** - uproszczona wersja, wyłącznie do formularzy jednostronicowych.
+- **app2.js** - obsługuje formularze z wieloma sekcjami.
