@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
-const { setTimeout } = require("node:timers/promises");
+
 const form = "https://docs.google.com/forms/d/e/1FAIpQLScEDpw1q9HDcIJq_AqUE3Sf3KTuQx_A-d0vD1m5tqGINlUGKA/viewform?usp=publish-editor";
-const text = ["dupa", "kebab", "komuch", "Chodacka"];
+const text = ["a", "b", "c", "VLO"];
 start(form, true)
 
 async function start(url, submitForm) {
@@ -10,7 +10,7 @@ async function start(url, submitForm) {
 
     });
     const page = await browser.newPage();
-    for (let y = 0; y < 10; y++) {
+    for (let y = 0; y < 30; y++) {
 
 
         try {
@@ -43,7 +43,6 @@ function getArrrayZero(n) {
 async function fill(page) {
     let els = await page.$$('.whsOnd.zHQkBf');
     console.log(els.length)
-    setTimeout(500)
     for (let i = 0; i < els.length; i++) {
         await els[i].click();
         await page.keyboard.type(text[getRndInteger(0, text.length - 1)]);
@@ -52,7 +51,7 @@ async function fill(page) {
     console.log(radioLists.length);
 
     for (let i = 0; i < radioLists.length; i++) {
-        let radio = await radioLists[i].$$('[role="radio"].Od2TWd');
+        let radio = await radioLists[i].$$('[role="radio"].Od2TWd:not([data-value="__other_option__"])');
         console.log(radio + '\n' + radio.length);
         await radio[getRndInteger(0, radio.length - 1)].click();
     }
@@ -70,7 +69,7 @@ async function fill(page) {
     console.log(checkBoxLists.length);
 
     for (let i = 0; i < checkBoxLists.length; i++) {
-        let check = await checkBoxLists[i].$$('[role="checkbox"]');
+        let check = await checkBoxLists[i].$$('[role="checkbox"]:not([data-answer-value="__other_option__"])');
         console.log(check + '\n' + check.length);
         let toCheck = getRndInteger(1, check.length);
         let arr = getArrrayZero(toCheck);
