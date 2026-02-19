@@ -10,7 +10,7 @@ async function start(url, submitForm) {
 
     });
     const page = await browser.newPage();
-    for (let y = 0; y < 3; y++) {
+    for (let y = 0; y < 10; y++) {
 
 
         try {
@@ -33,7 +33,13 @@ async function start(url, submitForm) {
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
+function getArrrayZero(n) {
+    let arr = [];
+    for (let i = 0; i < n; i++) {
+        arr.push(0)
+    }
+    return arr;
+}
 async function fill(page) {
     let els = await page.$$('.whsOnd.zHQkBf');
     console.log(els.length)
@@ -58,10 +64,29 @@ async function fill(page) {
         let rating = await ratingLists[i].$$('[role="radio"].p8oyLd');
 
         console.log(rating.length);
-        await rating[getRndInteger(0, rating.length-1)].click();
+        await rating[getRndInteger(0, rating.length - 1)].click();
+    }
+    let checkBoxLists = await page.$$(".Y6Myld");
+    console.log(checkBoxLists.length);
+
+    for (let i = 0; i < checkBoxLists.length; i++) {
+        let check = await checkBoxLists[i].$$('[role="checkbox"]');
+        console.log(check + '\n' + check.length);
+        let toCheck = getRndInteger(1, check.length);
+        let arr = getArrrayZero(toCheck);
+
+        for (let j = 0; j < toCheck; j++) {
+            let rnd = getRndInteger(0, check.length - 1);
+            if (!arr[rnd]) {
+                await check[rnd].click();
+                arr[rnd] = 1;
+            } else {
+                j--;
+            }
+        }
     }
     let sendButton = await page.$(".QvWxOd");
-    if(sendButton) {
+    if (sendButton) {
         await sendButton.click();
         await page.waitForNavigation();
         const submissionPage = await page.url();
