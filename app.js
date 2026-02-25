@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
 const { setTimeout } = require("node:timers/promises");
 const form = "https://docs.google.com/forms/d/e/1FAIpQLSd-geSCMw3eOlSybdyhTp4kU0oigEuOZkf9r3Ry5HJlqRaCQQ/viewform?usp=publish-editor";
-const text = ["dupa", "kebab", "komuch", "Chodacka"];
+const text = ["V LO Kraków", "V"];
 
 send(form, true)
 

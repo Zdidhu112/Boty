@@ -1,6 +1,6 @@
 # Boty
 ## Zastosowanie:
-Boty służą wyłącznie do zwalczanie B. Chodackiej :shit:.
+Boty służą wyłącznie do celów edukacyjnych :shit:.
 ## Zalety:
 - Darmowe
 - Względna niezawodność

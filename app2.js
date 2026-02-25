@@ -1,7 +1,8 @@
 const puppeteer = require("puppeteer");
 
-const form = "https://docs.google.com/forms/d/e/1FAIpQLScEDpw1q9HDcIJq_AqUE3Sf3KTuQx_A-d0vD1m5tqGINlUGKA/viewform?usp=publish-editor";
-const text = ["a", "b", "c", "VLO"];
+// const form = "https://docs.google.com/forms/d/e/1FAIpQLScEDpw1q9HDcIJq_AqUE3Sf3KTuQx_A-d0vD1m5tqGINlUGKA/viewform?usp=publish-editor";
+const form = "https://forms.gle/9UTr5dm98BoDieNe8";
+const text = ["V LO Kraków", "V"];
 start(form, true)
 
 async function start(url, submitForm) {
@@ -10,7 +11,7 @@ async function start(url, submitForm) {
 
     });
     const page = await browser.newPage();
-    for (let y = 0; y < 30; y++) {
+    for (let y = 0; y < 3; y++) {
 
 
         try {
